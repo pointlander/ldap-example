@@ -1,0 +1,15 @@
+github.com/go-asn1-ber/asn1-ber v1.3.1 h1:gvPdv/Hr++TRFCl0UbPFHC54P9N9jgsRPnmnr419Uck=
+github.com/go-asn1-ber/asn1-ber v1.3.1/go.mod h1:hEBeB/ic+5LoWskz+yKT7vGhhPYkProFKoKdwZRWMe0=
+github.com/go-ldap/ldap v0.0.0-20200331213323-83f96f147f1c/go.mod h1:hvemb2NERlosIa9MxvsjVfaqWeK4t9qRiM9Sk5RveWQ=
+github.com/go-ldap/ldap v3.0.3+incompatible h1:HTeSZO8hWMS1Rgb2Ziku6b8a7qRIZZMHjsvuZyatzwk=
+github.com/go-ldap/ldap v3.0.3+incompatible/go.mod h1:qfd9rJvER9Q0/D/Sqn1DfHRoBp40uXYvFoEVrNEPqRc=
+github.com/pointlander/ldap v0.0.0-20200427030513-e419149a454c h1:HMqUDKIMGt8lFFhGcs75RsxNjsRAPonVLGNTqv1TSqQ=
+github.com/pointlander/ldap v0.0.0-20200427030513-e419149a454c/go.mod h1:EFQP0rNburtIOzj98PyvQdMN9vjdt3A8Pnlu8y+IvzA=
+github.com/pointlander/ldap v0.0.0-20200427155316-ba4bdf77e826 h1:SVJDXstU4IH2MXPnPVKTM+7MLllOpTfKSrXTuj6uJWI=
+github.com/pointlander/ldap v0.0.0-20200427155316-ba4bdf77e826/go.mod h1:gT9oHg0wfDM+ZDqSfaar71HBNrnLeIAp4ePvQvrTz6s=
+github.com/pointlander/ldap v2.5.1+incompatible h1:Ts5d2GipIf4T+xSpF6zPMDjXZg6QdQtyYKbZv5RD5xM=
+github.com/pointlander/ldap v2.5.1+incompatible/go.mod h1:+foNYpesSZ9tL2bwg3OsltRAZiMUduV14z/BYusg5tg=
+gopkg.in/asn1-ber.v1 v1.0.0-20181015200546-f715ec2f112d h1:TxyelI5cVkbREznMhfzycHdkp5cLA7DpE+GKjSslYhM=
+gopkg.in/asn1-ber.v1 v1.0.0-20181015200546-f715ec2f112d/go.mod h1:cuepJuh7vyXfUyUwEgHQXw849cJrilpS5NeIjOWESAw=
+gopkg.in/ldap.v3 v3.1.0 h1:DIDWEjI7vQWREh0S8X5/NFPCZ3MCVd55LmXKPW4XLGE=
+gopkg.in/ldap.v3 v3.1.0/go.mod h1:dQjCc0R0kfyFjIlWNMH1DORwUASZyDxo2Ry1B51dXaQ=
