@@ -1,4 +1,4 @@
-// Copyright 2019 The LDAP Example Authors. All rights reserved.
+// Copyright 2020 The LDAP Example Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
@@ -6,34 +6,49 @@ package main
 
 import (
 	"crypto/tls"
+	"errors"
 	"fmt"
 
 	"github.com/go-ldap/ldap"
 )
 
 func main() {
-	username := "john"
-	//password := "johnldap"
+	err := Auth("john", "uid=john,ou=People,dc=nodomain", "johnldap")
+	if err != nil {
+		panic(err)
+	}
+	err = Auth("jane", "uid=jane,ou=People,dc=nodomain", "janeldap")
+	if err != nil {
+		panic(err)
+	}
+	err = Auth("john", "uid=john,ou=People,dc=nodomain", "password")
+	if err == nil {
+		panic("password should be invalid")
+	}
+	err = Auth("jane", "uid=jane,ou=People,dc=nodomain", "password")
+	if err == nil {
+		panic("password should be invalid")
+	}
+}
 
-	bindusername := "uid=john,ou=People,dc=nodomain"
-	bindpassword := "johnldap"
-
+// Auth authorizes an user
+func Auth(username, bindusername, bindpassword string) error {
 	config := tls.Config{
 		InsecureSkipVerify: true,
 	}
 	connection, err := ldap.DialURL("ldap://:1234")
 	if err != nil {
-		panic(err)
+		return err
 	}
 
 	err = connection.StartTLS(&config)
 	if err != nil {
-		panic(err)
+		return err
 	}
 
 	err = connection.Bind(bindusername, bindpassword)
 	if err != nil {
-		panic(err)
+		return err
 	}
 
 	searchRequest := ldap.NewSearchRequest(
@@ -46,10 +61,12 @@ func main() {
 
 	sr, err := connection.Search(searchRequest)
 	if err != nil {
-		panic(err)
+		return err
 	}
 
 	if len(sr.Entries) != 1 {
-		panic("User does not exist or too many entries returned")
+		return errors.New("User does not exist or too many entries returned")
 	}
+
+	return nil
 }
