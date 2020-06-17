@@ -13,26 +13,26 @@ import (
 )
 
 func main() {
-	err := Auth("john", "uid=john,ou=People,dc=nodomain", "johnldap")
+	err := Auth("john", "johnldap", "uid=john,ou=People,dc=nodomain", "johnldap")
 	if err != nil {
 		panic(err)
 	}
-	err = Auth("jane", "uid=jane,ou=People,dc=nodomain", "janeldap")
+	err = Auth("jane", "janeldap", "uid=jane,ou=People,dc=nodomain", "janeldap")
 	if err != nil {
 		panic(err)
 	}
-	err = Auth("john", "uid=john,ou=People,dc=nodomain", "password")
+	err = Auth("john", "password", "uid=john,ou=People,dc=nodomain", "password")
 	if err == nil {
 		panic("password should be invalid")
 	}
-	err = Auth("jane", "uid=jane,ou=People,dc=nodomain", "password")
+	err = Auth("jane", "password", "uid=jane,ou=People,dc=nodomain", "password")
 	if err == nil {
 		panic("password should be invalid")
 	}
 }
 
 // Auth authorizes an user
-func Auth(username, bindusername, bindpassword string) error {
+func Auth(username, password, bindusername, bindpassword string) error {
 	config := tls.Config{
 		InsecureSkipVerify: true,
 	}
@@ -66,6 +66,12 @@ func Auth(username, bindusername, bindpassword string) error {
 
 	if len(sr.Entries) != 1 {
 		return errors.New("User does not exist or too many entries returned")
+	}
+
+	user := sr.Entries[0].DN
+	err = connection.Bind(user, password)
+	if err != nil {
+		return err
 	}
 
 	return nil
